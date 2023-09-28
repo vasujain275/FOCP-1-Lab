@@ -3,9 +3,10 @@
 // Second line: all except first digit
 // Third line: all except first two digits
 // ............
-// Last line: The last digi
+// Last line: The last digit
 
 #include <stdio.h>
+#include <math.h>
 
 int main()
 {
@@ -21,12 +22,8 @@ int main()
     }
     for (int i = 0; i < digits; i++)
     {
-        temp = number;
-        for (int j = 0; j < i; j++)
-        {
-            temp /= 10;
-        }
-        printf("%d\n", temp);
+        int x = pow(10, digits - i);
+        printf("%d\n", number % x);
     }
     return 0;
 }
