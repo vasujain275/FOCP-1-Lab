@@ -5,18 +5,24 @@
 
 #include <stdio.h>
 
-int checksumPrime(int n)
-{
-    int i, j, flag = 0;
-    for (i = 2; i <= n / 2; ++i)
-    {
-        for (j = 2; j <= n / 2; ++j)
-        {
-            if (i + j == n)
-            {
-                flag = 1;
-                break;
-            }
+int isPrime(int num) {
+    if (num <= 1) {
+        return 0;
+    }
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int checksumPrime(int n) {
+    int i, flag = 0;
+    for (i = 2; i <= n / 2; ++i) {
+        if (isPrime(i) && isPrime(n - i)) {
+            flag = 1;
+            break;
         }
     }
     return flag;
